@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Kecil Untuk Mail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: #fff0f3; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; position: relative; }
+        
+        /* Efek Love Berguguran */
+        .falling-hearts { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; display: none; }
+        .heart-drop { position: absolute; color: #ffb3c6; font-size: 1.2rem; animation: fall linear infinite; }
+        @keyframes fall {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container { text-align: center; width: 350px; z-index: 2; }
+        
+        /* Balon Terbang Ngikat Surat */
+        .balon-bundle { position: relative; display: inline-block; animation: terbang 3s ease-in-out infinite; }
+        .balon { font-size: 80px; line-height: 1; }
+        .tali { width: 2px; height: 50px; background: #f48fb1; margin: 0 auto; }
+        .surat-gantung { background: white; padding: 15px 20px; border-radius: 12px; border: 2px solid #f48fb1; font-size: 0.9rem; font-weight: bold; color: #d81b60; cursor: pointer; box-shadow: 0 8px 20px rgba(244,143,177,0.2); }
+        
+        @keyframes terbang {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
+        }
+
+        /* Halaman Surat */
+        #halamanSurat { display: none; background: white; padding: 25px; border-radius: 20px; border: 2px solid #ffe3e8; box-shadow: 0 10px 30px rgba(244,143,177,0.25); animation: scaleUp 0.4s ease forwards; }
+        @keyframes scaleUp { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .letter-text { color: #880e4f; line-height: 1.8; font-size: 0.95rem; white-space: pre-line; text-align: center; background: #fff5f7; padding: 20px; border-radius: 15px; border: 1px dashed #f48fb1; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <!-- Wadah Love-Love Terbang -->
+    <div class="falling-hearts" id="heartsGugur"></div>
+
+    <!-- HALAMAN AWAL: BALON NGIKET SURAT -->
+    <div class="container" id="halamanUtama">
+        <div class="balon-bundle">
+            <div class="balon">🎈</div>
+            <div class="tali"></div>
+            <div class="surat-gantung" onclick="bukaSurat()">surat kecil untuk mail<br><span style="font-size:0.75rem; font-weight:normal; color:#aaa;">(klik untuk buka inti surat)</span></div>
+        </div>
+    </div>
+
+    <!-- HALAMAN AKHIR: INTI SURAT -->
+    <div class="container" id="halamanSurat">
+        <div class="letter-text">
+            <b>happyyy mansivvv yg kee 7 month nyaaa cayanggg quhhh💐💋</b>
+
+            semogaaa kitaaa selaluu menjadi pasangan yg selaluu mau tumbuhh dan belajar baregg barenggg yaaa sayanggg kuu💗, 
+            
+            akuu mintaaa maaff yaaa kalooo akuu sukaa ngeselinnnn hehe tapiiii kann Princess nyaa mailll inii hehe☺️💋, 
+            
+            semogaaa kitaa selalu jadii pasangan yg selalu takutt kehilangan satuu samaa lainn yaa🫂, 
+            
+            semogaaa rezeki kitaa berdua lancarrrr jayaaaa aamiiinnnn💗, 
+            
+            cippaaa alwayss cayanggg mailllll hehe wopyuu moreeee cayanggg💗💋💐
+        </div>
+    </div>
+
+    <script>
+        function bukaSurat() {
+            // Sembunyikan balon, tampilkan surat
+            document.getElementById('halamanUtama').style.display = 'none';
+            document.getElementById('halamanSurat').style.display = 'block';
+            
+            // Aktifkan love-love berjatuhan
+            const heartsContainer = document.getElementById('heartsGugur');
+            heartsContainer.style.display = 'block';
+            
+            const heartTypes = ['💗', '❤️', '✨', '🌸'];
+            for (let i = 0; i < 25; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'heart-drop';
+                drop.innerText = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+                drop.style.left = Math.random() * 100 + 'vw';
+                drop.style.animationDelay = Math.random() * 3 + 's';
+                drop.style.animationDuration = Math.random() * 3 + 4 + 's';
+                heartsContainer.appendChild(drop);
+            }
+        }
+    </script>
+</body>
+</html>
